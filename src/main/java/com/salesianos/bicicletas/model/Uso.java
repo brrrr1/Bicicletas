@@ -23,16 +23,15 @@ public class Uso {
     private double coste;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "fk_usuario"))
+    @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "fk_usuario_uso"))
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "bicicleta_id", foreignKey = @ForeignKey(name = "fk_bicicleta"))
+    @JoinColumn(name = "bicicleta_id", foreignKey = @ForeignKey(name = "fk_bicicleta_uso"))
     private Bicicleta bicicleta;
 
     @ManyToOne
     @JoinColumn(name = "estacion_final_id", foreignKey = @ForeignKey(name = "fk_estacion_final_uso"))
     private Estacion estacionFinal;
-
 
 }

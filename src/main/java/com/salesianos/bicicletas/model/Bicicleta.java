@@ -23,11 +23,22 @@ public class Bicicleta {
     private String estado;
 
     @ManyToOne
-    @JoinColumn(name = "estacion_id")
+    @JoinColumn(name = "estacion_id", foreignKey = @ForeignKey(name = "fk_estacion_bicicleta"))
     private Estacion estacion;
 
     @OneToMany(mappedBy = "bicicleta")
+    @ToString.Exclude
     private List<Uso> usos;
 
+    // Métodos helper ESTACION
+    public void addUso(Uso u) {
+        this.usos.add(u);
+        u.setBicicleta(this);
+    }
+
+    public void removeUso(Uso u) {
+        this.usos.remove(u);
+        u.setBicicleta(null);
+    }
 
 }

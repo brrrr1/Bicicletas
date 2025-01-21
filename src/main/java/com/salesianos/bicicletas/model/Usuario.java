@@ -28,5 +28,18 @@ public class Usuario {
     private String saldo;
 
     @OneToMany(mappedBy = "usuario")
+    @ToString.Exclude
     private List<Uso> usos;
+
+    // Métodos helper USO
+    public void addUso(Uso u) {
+        this.usos.add(u);
+        u.setUsuario(this);
+    }
+
+    public void removeUso(Uso u) {
+        this.usos.remove(u);
+        u.setUsuario(null);
+    }
+
 }

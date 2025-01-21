@@ -19,18 +19,51 @@ public class DataSeed {
 
     @PostConstruct
     public void init() {
-        Usuario usuario1 = Usuario.builder().nombre("Juan Perez").numTarjeta("123456789").pin("1234").saldo("50.0").build();
-        Usuario usuario2 = Usuario.builder().nombre("Ana Lopez").numTarjeta("987654321").pin("5678").saldo("30.0").build();
+        Usuario usuario1 = Usuario.builder()
+                .nombre("Juan Perez")
+                .numTarjeta("123456789")
+                .pin("1234").saldo("50.0")
+                .build();
+
+        Usuario usuario2 = Usuario.builder()
+                .nombre("Ana Lopez")
+                .numTarjeta("987654321")
+                .pin("5678")
+                .saldo("30.0")
+                .build();
+
         usuarioRepository.save(usuario1);
         usuarioRepository.save(usuario2);
 
-        Estacion estacion1 = Estacion.builder().numero(1).nombre("Estación Central").coordenadas("40.416775,-3.703790").capacidad(10).build();
-        Estacion estacion2 = Estacion.builder().numero(2).nombre("Estación Norte").coordenadas("40.452085,-3.688530").capacidad(15).build();
+        Estacion estacion1 = Estacion.builder()
+                .numero(1).nombre("Estación Central")
+                .coordenadas("40.416775,-3.703790")
+                .capacidad(10)
+                .build();
+
+        Estacion estacion2 = Estacion.builder()
+                .numero(2).nombre("Estación Norte")
+                .coordenadas("40.452085,-3.688530")
+                .capacidad(15)
+                .build();
+
         estacionRepository.save(estacion1);
         estacionRepository.save(estacion2);
 
-        Bicicleta bicicleta1 = Bicicleta.builder().marca("Orbea").modelo("MX50").estado("Disponible").estacion(estacion1).build();
-        Bicicleta bicicleta2 = Bicicleta.builder().marca("Giant").modelo("Talon").estado("Disponible").estacion(estacion2).build();
+        Bicicleta bicicleta1 = Bicicleta.builder()
+                .marca("Orbea")
+                .modelo("MX50")
+                .estado("Disponible")
+                .estacion(estacion1)
+                .build();
+
+        Bicicleta bicicleta2 = Bicicleta.builder()
+                .marca("Giant")
+                .modelo("Talon")
+                .estado("Disponible")
+                .estacion(estacion2)
+                .build();
+
         bicicletaRepository.save(bicicleta1);
         bicicletaRepository.save(bicicleta2);
 
@@ -55,24 +88,9 @@ public class DataSeed {
         usoRepository.save(uso1);
         usoRepository.save(uso2);
 
-        System.out.println("Usuarios:");
-        usuarioRepository.findAll().forEach(usuario -> {
-            System.out.println("Usuario: " + usuario.getNombre() + ", Tarjeta: " + usuario.getNumTarjeta() + ", Saldo: " + usuario.getSaldo());
-        });
-
-        System.out.println("\nEstaciones:");
-        estacionRepository.findAll().forEach(estacion -> {
-            System.out.println("Estación: " + estacion.getNombre() + ", Coordenadas: " + estacion.getCoordenadas() + ", Capacidad: " + estacion.getCapacidad());
-        });
-
-        System.out.println("\nBicicletas:");
-        bicicletaRepository.findAll().forEach(bicicleta -> {
-            System.out.println("Bicicleta: " + bicicleta.getMarca() + " " + bicicleta.getModelo() + ", Estado: " + bicicleta.getEstado());
-        });
-
-        System.out.println("\nUsos:");
-        usoRepository.findAll().forEach(uso -> {
-            System.out.println("Uso: Usuario " + uso.getUsuario().getNombre() + ", Bicicleta: " + uso.getBicicleta().getMarca() + " " + uso.getBicicleta().getModelo() + ", Coste: " + uso.getCoste());
-        });
+        System.out.println("Usuarios: " + usuarioRepository.findAll());
+        System.out.println("Estaciones: " + estacionRepository.findAll());
+        System.out.println("Bicicletas: " + bicicletaRepository.findAll());
+        System.out.println("Usos: " + usoRepository.findAll());
     }
 }
