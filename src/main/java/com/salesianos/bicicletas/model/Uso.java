@@ -1,8 +1,6 @@
 package com.salesianos.bicicletas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -25,15 +23,15 @@ public class Uso {
     private double coste;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "fk_usuario"))
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "bicicleta_id")
+    @JoinColumn(name = "bicicleta_id", foreignKey = @ForeignKey(name = "fk_bicicleta"))
     private Bicicleta bicicleta;
 
     @ManyToOne
-    @JoinColumn(name = "estacion_final_id")
+    @JoinColumn(name = "estacion_final_id", foreignKey = @ForeignKey(name = "fk_estacion_final_uso"))
     private Estacion estacionFinal;
 
 
