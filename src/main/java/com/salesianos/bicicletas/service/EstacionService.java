@@ -17,13 +17,13 @@ public class EstacionService {
     public List<Estacion> findAll() {
         List<Estacion> result = estacionRepository.findAll();
         if (result.isEmpty())
-            throw new EntityNotFoundException("No hay categorias con esos criterios de búsqueda");
+            throw new EntityNotFoundException("No hay estaciones con esos criterios de búsqueda");
         return result;
     }
 
     public Estacion findById(Long id) {
         return estacionRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("No hay categoria con ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("No hay estación con ID: " + id));
 
     }
 
@@ -37,7 +37,7 @@ public class EstacionService {
                     old.setNombre(estacion.getNombre());
                     return estacionRepository.save(old);
                 })
-                .orElseThrow(() -> new EntityNotFoundException("No hay categoria con ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("No hay estación con ID: " + id));
 
     }
 
