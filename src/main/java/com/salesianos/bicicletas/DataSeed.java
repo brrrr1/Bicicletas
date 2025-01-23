@@ -64,8 +64,32 @@ public class DataSeed {
                 .estacion(estacion2)
                 .build();
 
+        Bicicleta bicicleta3 = Bicicleta.builder()
+                .marca("Merida")
+                .modelo("Big Nine")
+                .estado("Disponible")
+                .estacion(estacion1)
+                .build();
+
+        Bicicleta bicicleta4 = Bicicleta.builder()
+                .marca("Dahon")
+                .modelo("Vitesse")
+                .estado("Disponible")
+                .estacion(estacion2)
+                .build();
+
+        Bicicleta bicicleta5 = Bicicleta.builder()
+                .marca("Trek")
+                .modelo("Marlin")
+                .estado("Disponible")
+                .estacion(estacion2)
+                .build();
+
         bicicletaRepository.save(bicicleta1);
         bicicletaRepository.save(bicicleta2);
+        bicicletaRepository.save(bicicleta3);
+        bicicletaRepository.save(bicicleta4);
+        bicicletaRepository.save(bicicleta5);
 
         Uso uso1 = Uso.builder()
                 .fechaInicio(LocalDateTime.now().minusHours(1))
@@ -88,9 +112,15 @@ public class DataSeed {
         usoRepository.save(uso1);
         usoRepository.save(uso2);
 
-        System.out.println("Usuarios: " + usuarioRepository.findAll());
-        System.out.println("Estaciones: " + estacionRepository.findAll());
-        System.out.println("Bicicletas: " + bicicletaRepository.findAll());
-        System.out.println("Usos: " + usoRepository.findAll());
+        System.out.println("User:");
+        usuarioRepository.findAll().forEach(System.out::println);
+        System.out.println("Estacion:");
+        estacionRepository.findAll().forEach(System.out::println);
+        System.out.println("Bicicleta:");
+        bicicletaRepository.findAll().forEach(System.out::println);
+        System.out.println("Uso:");
+        usoRepository.findAll().forEach(System.out::println);
+
+
     }
 }

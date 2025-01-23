@@ -42,7 +42,9 @@ public class EstacionService {
     }
 
     public void delete(Long id) {
+
         estacionRepository.deleteById(id);
+
     }
 
 }

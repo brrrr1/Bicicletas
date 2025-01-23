@@ -57,4 +57,11 @@ public class BicicletaService {
         bicicletaRepository.deleteById(id);
     }
 
+    public List<Bicicleta> findByMarca(String marca) {
+        List<Bicicleta> result = bicicletaRepository.findByMarca(marca);
+        if (result.isEmpty())
+            throw new EntityNotFoundException("No hay bicicletas con esa marca");
+        return result;
+    }
+
 }

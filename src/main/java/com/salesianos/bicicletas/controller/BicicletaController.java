@@ -2,6 +2,7 @@ package com.salesianos.bicicletas.controller;
 
 import com.salesianos.bicicletas.dto.EditBici;
 import com.salesianos.bicicletas.dto.GetBiciDto;
+import com.salesianos.bicicletas.dto.GetBiciMarca;
 import com.salesianos.bicicletas.dto.GetEstacionDto;
 import com.salesianos.bicicletas.model.Bicicleta;
 import com.salesianos.bicicletas.model.Estacion;
@@ -164,6 +165,14 @@ public class BicicletaController {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         bicicletaService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/marca/{marca}")
+    public List<GetBiciMarca> findByMarca(@PathVariable String marca) {
+        return bicicletaService.findByMarca(marca)
+                .stream()
+                .map(GetBiciMarca::fromBicicleta)
+                .toList();
     }
 
 }
